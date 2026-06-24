@@ -366,6 +366,25 @@
     .job-trigger h3{ font-size:20px; }
   }
 
+
+  /* TEXT ALIGNMENT */
+  .hero-bio p,
+  .about-text p,
+  .job-body li{
+    text-align:justify;
+    text-align-last:left;
+    hyphens:auto;
+  }
+
+  @media (max-width: 600px){
+    .hero-bio p,
+    .about-text p,
+    .job-body li{
+      text-align:left;
+      hyphens:none;
+    }
+  }
+
   /* EDUCATION + CERTS */
   .edu-cert-grid{ display:grid; grid-template-columns: 1fr 1.2fr; gap:48px; }
   .edu-section{ display:flex; flex-direction:column; gap:0; }
