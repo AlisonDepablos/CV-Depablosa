@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alison Depablos — Diseñadora Gráfica Senior</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E0E10;
+    --bg-alt: #17171A;
+    --paper: #1C1C1F;
+    --text: #ECE8E0;
+    --muted: #8E8A82;
+    --line: #2C2C30;
+    --accent: #C2914B;
+    --accent-soft: rgba(194,145,75,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ::selection{background:var(--accent-soft); color:var(--text);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .crop{
+    position:relative;
+  }
+  .crop::before, .crop::after,
+  .crop .cm-tl, .crop .cm-tr, .crop .cm-bl, .crop .cm-br{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:1px solid var(--accent);
+    opacity:0.55;
+  }
+  .crop::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .crop::after{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+  .crop .cm-bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+  .crop .cm-br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; }
+
+  header.hero{
+    min-height:92vh;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative;
+    padding:80px 0 60px;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(194,145,75,0.07), transparent 45%),
+      var(--bg);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-photo{
+    position:relative;
+    aspect-ratio: 3/4;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .hero-photo img{
+    width:100%; height:100%; object-fit:cover;
+    filter: saturate(0.92) contrast(1.03);
+    display:block;
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(14,14,16,0.55));
+  }
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns:1fr; gap:32px; }
+    .hero-photo{ order:-1; max-width:260px; }
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:""; width:26px; height:1px; background:var(--accent);
+  }
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(48px, 9vw, 96px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(18px,2.4vw,26px);
+    color:var(--muted);
+    margin-top:18px;
+    max-width:620px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:28px;
+    margin-top:48px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .hero-meta span b{ color:var(--text); display:block; font-size:13px; margin-bottom:4px; font-weight:500; }
+
+  section{ padding:90px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; align-items:baseline; gap:18px;
+    margin-bottom:48px;
+  }
+  .section-head .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--accent); letter-spacing:0.1em;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px,4vw,40px);
+  }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; }
+  .about-grid p{ color:var(--text); font-size:17px; max-width:560px; }
+  .about-grid p + p{ margin-top:18px; color:var(--muted); }
+  .stack-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:28px;
+  }
+  .stack-card .cm-tl, .stack-card .cm-tr, .stack-card .cm-bl, .stack-card .cm-br{ display:block; }
+  .stack-card h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:16px;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    border:1px solid var(--line);
+    padding:6px 12px;
+    color:var(--text);
+    background:var(--bg-alt);
+  }
+
+  /* EXPERIENCE — job ticket style */
+  .job{
+    display:grid;
+    grid-template-columns: 170px 1fr;
+    gap:32px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+  }
+  .job:first-of-type{ border-top:none; padding-top:0; }
+  .job .when{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--accent); letter-spacing:0.04em;
+    padding-top:4px;
+  }
+  .job .what h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:21px;
+    margin-bottom:2px;
+  }
+  .job .what .co{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:14px;
+    display:block;
+  }
+  .job ul{ list-style:none; }
+  .job li{
+    position:relative;
+    padding-left:18px;
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:8px;
+    max-width:600px;
+  }
+  .job li::before{
+    content:"—";
+    position:absolute; left:0; color:var(--accent);
+  }
+
+  /* EDUCATION + CERTS */
+  .edu-cert-grid{ display:grid; grid-template-columns: 1fr 1.3fr; gap:56px; }
+  .edu-block{ margin-bottom:28px; }
+  .edu-block h3{ font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin-bottom:4px; }
+  .edu-block .meta{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted); }
+  .cert-list{ display:grid; gap:14px; }
+  .cert-item{
+    display:flex; justify-content:space-between; gap:16px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+    font-size:14px;
+  }
+  .cert-item .cname{ color:var(--text); }
+  .cert-item .cdate{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); white-space:nowrap; }
+
+  /* CONTACT */
+  /* WORK */
+  .work-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:28px;
+  }
+  .work-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .work-card .embed-wrap{
+    position:relative;
+    width:100%;
+    padding-top:78.2%; /* matches 404x316 ratio */
+    background:var(--bg-alt);
+  }
+  .work-card .embed-wrap iframe{
+    position:absolute; inset:0;
+    width:100%; height:100%; border:0;
+  }
+  .work-card .label{
+    padding:14px 18px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+  }
+  @media (max-width: 700px){
+    .work-grid{ grid-template-columns:1fr; }
+  }
+
+  footer{
+    padding:100px 0 60px;
+    text-align:center;
+    position:relative;
+  }
+  footer h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(32px,6vw,56px);
+    margin-bottom:28px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+    margin-bottom:50px;
+  }
+  .contact-row a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--text);
+    border:1px solid var(--line);
+    padding:12px 20px;
+    transition: border-color .2s, color .2s;
+  }
+  .contact-row a:hover{
+    border-color:var(--accent); color:var(--accent); text-decoration:none;
+  }
+  footer .fineprint{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--muted);
+    letter-spacing:0.08em;
+  }
+
+  @media (max-width: 760px){
+    .about-grid, .edu-cert-grid{ grid-template-columns:1fr; gap:32px; }
+    .job{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero crop wrap" style="max-width:1040px; margin:0 auto;">
+  <span class="cm-tl"></span><span class="cm-tr"></span><span class="cm-bl"></span><span class="cm-br"></span>
+  <div style="padding:0 28px;">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Diseño · Branding · Dirección de Arte</p>
+        <h1 class="name">Alison<br>Depablos</h1>
+        <p class="role">Diseñadora gráfica senior con 8+ años llevando marcas desde el papel hasta la pantalla — de la imprenta offset al content marketing impulsado por IA.</p>
+        <div class="hero-meta">
+          <span><b>Con base en</b>Colombia</span>
+          <span><b>Disponible para</b>Proyectos freelance &amp; tiempo completo</span>
+          <span><b>Especialidad</b>Branding · Social · Dirección de arte</span>
+        </div>
+      </div>
+      <div class="hero-photo crop">
+        <span class="cm-tl"></span><span class="cm-tr"></span><span class="cm-bl"></span><span class="cm-br"></span>
+        <img src="alison-photo.png" alt="Retrato de Alison Depablos">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">01</span><h2>Perfil</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Diseñadora gráfica con más de 8 años de experiencia en branding, marketing digital, gestión de contenido y dirección de proyectos creativos. He desarrollado estrategias de comunicación, campañas digitales, identidades visuales y coordinado equipos multidisciplinarios en distintas industrias.</p>
+        <p>Hoy me especializo en content marketing, social media y producción de contenido para marcas, integrando herramientas de inteligencia artificial para optimizar procesos creativos sin perder calidad ni intención. Disfruto liderar proyectos de inicio a fin, gestionando múltiples frentes a la vez.</p>
+      </div>
+      <div class="stack-card crop">
+        <span class="cm-tl"></span><span class="cm-tr"></span><span class="cm-bl"></span><span class="cm-br"></span>
+        <h3>Herramientas</h3>
+        <div class="chip-row">
+          <span class="chip">Adobe Illustrator</span>
+          <span class="chip">Photoshop</span>
+          <span class="chip">InDesign</span>
+          <span class="chip">Figma</span>
+          <span class="chip">Canva</span>
+          <span class="chip">CapCut</span>
+          <span class="chip">ChatGPT / IA</span>
+          <span class="chip">WordPress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">02</span><h2>Experiencia</h2></div>
+
+    <div class="job">
+      <div class="when">2024 — Actualidad</div>
+      <div class="what">
+        <h3>Content Specialist</h3>
+        <span class="co">Orbidi / Plinng</span>
+        <ul>
+          <li>Diseño y desarrollo de piezas gráficas para redes sociales y campañas digitales.</li>
+          <li>Edición y producción de videos para Reels.</li>
+          <li>Diseño de páginas web y landing pages.</li>
+          <li>Coordinación del área de feedback: distribución de tareas y seguimiento al equipo para cumplir indicadores de servicio (SLA y TMO).</li>
+          <li>Implementación de herramientas de IA para agilizar procesos creativos y optimizar recursos.</li>
+          <li>Trabajo colaborativo con equipos multidisciplinarios para asegurar calidad y entrega oportuna.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2022 — 2024</div>
+      <div class="what">
+        <h3>Project Manager</h3>
+        <span class="co">Agora Productions</span>
+        <ul>
+          <li>Planificación, coordinación y ejecución de proyectos audiovisuales y digitales.</li>
+          <li>Coordinación de calendarios de publicación y estrategias digitales.</li>
+          <li>Supervisión de producción y edición de piezas gráficas y contenido interactivo.</li>
+          <li>Gestión de campañas y colaboraciones con marcas y aliados estratégicos.</li>
+          <li>Dirección de preproducción: storyboard, guion, casting y scouting de locaciones.</li>
+          <li>Planificación de rodajes y gestión logística de equipos de producción.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2021 — 2022</div>
+      <div class="what">
+        <h3>Diseñadora Gráfica</h3>
+        <span class="co">Zona Creativa</span>
+        <ul>
+          <li>Diseño y producción de piezas gráficas para medios impresos y material publicitario.</li>
+          <li>Supervisión de procesos de impresión y control de calidad en gran formato.</li>
+          <li>Diseño de flyers, cuadernos, agendas, vinilos y material P.O.P.</li>
+          <li>Selección de materiales y acabados, coordinación con proveedores y producción.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2019 — 2020</div>
+      <div class="what">
+        <h3>Diseñadora Gráfica</h3>
+        <span class="co">Litografía Star Service</span>
+        <ul>
+          <li>Gestión integral de procesos gráficos para impresión offset.</li>
+          <li>Preparación de archivos para impresión, imposición, separación de colores y pruebas de color.</li>
+          <li>Elaboración de troqueles y montaje de planchas mediante tecnología CTP.</li>
+          <li>Supervisión y control de calidad de productos impresos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2018</div>
+      <div class="what">
+        <h3>Directora de Arte (Freelance)</h3>
+        <span class="co">Active Magazine</span>
+        <ul>
+          <li>Desarrollo e implementación de la identidad visual y manual de estilo editorial.</li>
+          <li>Diseño de maquetas, estructuras de página y lineamientos de diagramación.</li>
+          <li>Dirección y acompañamiento de diseñadores, ilustradores y colaboradores creativos.</li>
+          <li>Diseño y adaptación de piezas y animaciones para el lanzamiento de cada edición en redes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2016 — 2018</div>
+      <div class="what">
+        <h3>Diseñadora Gráfica</h3>
+        <span class="co">SAIME</span>
+        <ul>
+          <li>Diseño y producción de contenido gráfico para redes sociales y plataformas digitales.</li>
+          <li>Creación de material publicitario impreso: pancartas, volantes, pendones y brochures.</li>
+          <li>Diseño de rotulación, señalización e identidad visual para espacios comerciales.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">05</span><h2>Educación &amp; Certificaciones</h2></div>
+    <div class="edu-cert-grid">
+      <div>
+        <div class="edu-block">
+          <h3>Técnico Superior Universitario, Diseño Gráfico</h3>
+          <p class="meta">Instituto Universitario de Diseño Las Mercedes · 2013–2016</p>
+        </div>
+        <div class="edu-block">
+          <h3>Certificación en Community Manager</h3>
+          <p class="meta">Marketing digital</p>
+        </div>
+      </div>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cname">Pensamiento Estratégico — Platzi</span><span class="cdate">Sept. 2025</span></div>
+        <div class="cert-item"><span class="cname">Gestión y Liderazgo en Diseño — Platzi</span><span class="cdate">Ago. 2025</span></div>
+        <div class="cert-item"><span class="cname">Diseño para Redes Sociales — Platzi</span><span class="cdate">Ago. 2025</span></div>
+        <div class="cert-item"><span class="cname">Habilidades Blandas para el Desarrollo Profesional — Platzi</span><span class="cdate">Ago. 2025</span></div>
+        <div class="cert-item"><span class="cname">Resolución de Conflictos — Platzi</span><span class="cdate">Jul. 2025</span></div>
+        <div class="cert-item"><span class="cname">Técnicas de Influencia y Persuasión — Platzi</span><span class="cdate">Jul. 2025</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">04</span><h2>Trabajos destacados</h2></div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="embed-wrap">
+          <iframe src="https://www.behance.net/embed/project/251400671?ilo0=1" allowfullscreen loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="label">Proyecto 01 — Behance</p>
+      </div>
+      <div class="work-card">
+        <div class="embed-wrap">
+          <iframe src="https://www.behance.net/embed/project/251333229?ilo0=1" allowfullscreen loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="label">Proyecto 02 — Prototipo web</p>
+      </div>
+      <div class="work-card">
+        <div class="embed-wrap">
+          <iframe src="https://www.behance.net/embed/project/235232187?ilo0=1" allowfullscreen loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="label">Proyecto 03 — Behance</p>
+      </div>
+      <div class="work-card">
+        <div class="embed-wrap">
+          <iframe src="https://www.behance.net/embed/project/251626993?ilo0=1" allowfullscreen loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="label">Proyecto 04 — Behance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Trabajemos<br>juntos.</h2>
+    <div class="contact-row">
+      <a href="mailto:alisondepablos@gmail.com">alisondepablos@gmail.com</a>
+      <a href="https://www.linkedin.com/in/depablosa/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/Depablosa" target="_blank" rel="noopener">Behance</a>
+      <a href="https://wa.me/573165576131" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="fineprint">© 2026 Alison Depablos — Diseñadora Gráfica</p>
+  </div>
+</footer>
+
+</body>
+</html>
